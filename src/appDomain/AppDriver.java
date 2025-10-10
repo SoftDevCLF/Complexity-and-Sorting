@@ -30,7 +30,40 @@ public class AppDriver {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String filename = null;
+		// ****parsing command line arguments***
+		// Here I'm pointing how many arguments the program accepts
+		// 3 because -ffile_name -tv -sb
+		if (args.length < 3) {
+			System.out.println("Not enough arguments.");
+			return;
+		}
+		
+		//Start the variables		
+        String filename = null;
+        String comparisonType = null;
+        String sortingType = null;
+        
+        //Start from the first argument (index 0),
+        //keep going until you’ve checked all of them,
+        //and move one by one through the array.
+        //order insensitive
+        for (int i = 0; i < args.length; i++) {
+        	//case insensitive
+        	if (args[i].startsWith("-f") || args[i].startsWith("-F")) {
+                //the filename will be the substring of the argument
+        		filename = args[i].substring(2);
+            } else if (args[i].startsWith("-t") || args[i].startsWith("-T")) {
+                comparisonType = args[i].substring(2);
+            } else if (args[i].startsWith("-s") || args[i].startsWith("-S")) {
+                sortingType = args[i].substring(2);
+            }
+        }
+
+        if (filename == null || comparisonType == null ||sortingType == null  )  {
+            System.out.println("Missing arguments.");
+            return;
+        }
+        
 		File file = new File(filename);
 		// TODO Auto-generated method stub
 
