@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import shapes.*;
 import utilities.BubbleSort;
+import utilities.MergeSort;
 import utilities.QuickSort;
 
 public class SortManager
@@ -152,6 +153,16 @@ public class SortManager
 			else
 			{
 				QuickSort.quickSortCompare(shapes, comparator, 0, shapes.length - 1);
+			}
+			break;
+		case "m":
+			if (comparator == null)
+			{
+				MergeSort.mergeSortCompareTo(shapes, 0, shapes.length - 1);
+			}
+			else 
+			{
+				MergeSort.mergeSortCompare(shapes, 0, shapes.length - 1, comparator);
 			}
 			break;
 
