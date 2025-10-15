@@ -1,41 +1,34 @@
 package shapes;
 
-public class Pyramid extends Shape
-{
+public abstract class Prism extends Shape {
+
 	private double side;
+	
 
 	/**
 	 * @param height
 	 * @param side
 	 */
-	public Pyramid(double height, double side) {
+	public Prism(double height, double side) {
 		super(height);
 		this.side = side;
 	}
-
+	
 	/**
 	 * @return the side
 	 */
 	public double getSide() {
 		return side;
 	}
-
 	/**
 	 * @param side the side to set
 	 */
 	public void setSide(double side) {
 		this.side = side;
 	}
-
-	@Override
+	
 	public double calcVolume() {
-		return (1.0/3.0) * calcBaseArea() *getHeight();
-	}
-
-	@Override
-	public double calcBaseArea() {
-		return Math.pow(getSide(), 2); 
+	    return calcBaseArea() * getHeight();
 	}
 	
-
 }
