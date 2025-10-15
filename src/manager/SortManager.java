@@ -153,6 +153,7 @@ public class SortManager
 			{
 				QuickSort.quickSortCompare(shapes, comparator, 0, shapes.length - 1);
 			}
+			break;
 
 		default:
 			throw new IllegalArgumentException("Invalid sorting type");
