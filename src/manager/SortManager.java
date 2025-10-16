@@ -3,9 +3,8 @@ package manager;
 import java.io.*;
 import java.util.*;
 import shapes.*;
-import utilities.BubbleSort;
-import utilities.MergeSort;
-import utilities.QuickSort;
+import utilities.*;
+
 
 public class SortManager
 {
@@ -132,10 +131,15 @@ public class SortManager
 		default:
 			throw new IllegalArgumentException("Invalid comparison type");
 		}
-				
+		
+		//Measure sort time (benchmarking)
+		long startTime = System.currentTimeMillis();
+		
+		String sortName = "";
 		switch (sortingType.toLowerCase())
 		{
 		case "b":
+			sortName = "Bubble Sort";
 			if (comparator == null)
 			{
 				BubbleSort.bubbleSortCompareTo(shapes);
@@ -146,6 +150,7 @@ public class SortManager
 			}
 			break;
 		case "q":
+			sortName = "Quick Sort";
 			if (comparator == null)
 			{
 				QuickSort.quickSortCompareTo(shapes, 0, shapes.length - 1);
@@ -156,6 +161,7 @@ public class SortManager
 			}
 			break;
 		case "m":
+			sortName = "Merge Sort";
 			if (comparator == null)
 			{
 				MergeSort.mergeSortCompareTo(shapes, 0, shapes.length - 1);
@@ -169,5 +175,14 @@ public class SortManager
 		default:
 			throw new IllegalArgumentException("Invalid sorting type");
 		}
+		
+		long endTime = System.currentTimeMillis();
+		long totalDuration = (endTime - startTime); //Average run time
+		
+		
+		//Print the type of sort and runtime in miliseconds 
+		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds" );
 	}
 }
+
+
