@@ -200,7 +200,7 @@ public class SortManager
 		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t" + measurementType);
 		
 		
-		//Print the type of sort and runtime in miliseconds 
+		//Print the type of sort and runtime in milliseconds 
 		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds");
 	}
 }

@@ -144,7 +144,5 @@ public class MergeSort
 				mergeSortCompare(array, mid + 1, right, comparator);
 				mergeCompare(array, left, mid, right, comparator);	
 			}
-		}
-	
-	
+		}	
 	}
