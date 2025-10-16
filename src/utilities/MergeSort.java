@@ -39,7 +39,8 @@ public class MergeSort
 		//Initial index of merged sub array
 		while (i < n1 && j < n2) 
 		{
-			if(Left[i].compareTo(Right[j]) <= 0)
+			//flipped comparison signs for descending
+			if(Left[i].compareTo(Right[j]) >= 0)
 			{
 				array[k] = Left[i];
 				i++;
@@ -98,7 +99,7 @@ public class MergeSort
 		//Initial index of merged sub array 
 		while (i < n1 && j < n2) 
 		{
-			if(comparator.compare(Left[i], Right[j]) <= 0)
+			if(comparator.compare(Left[i], Right[j]) >= 0)
 			{
 				array[k] = Left[i];
 				i++;
