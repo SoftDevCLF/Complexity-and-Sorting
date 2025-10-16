@@ -188,7 +188,7 @@ public class SortManager
 		//Print the first element
 		if (shapes.length > 0)
 		{
-			System.out.println("First element is: " + shapes[0] + "\t " + measurementType);
+			System.out.println("First element is:\t " + shapes[0] + "\t" + measurementType);
 		}		
 		
 		// Print every 1000th element
