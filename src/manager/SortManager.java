@@ -117,25 +117,31 @@ public class SortManager
 		}
 		
 		//Determine compare Type
+		String measurementType = "";
 		switch (compareType.toLowerCase())
 		{
 		case "h":
+			measurementType = "Height:";
 			comparator = null;
 			break;
 		case "a":
+			measurementType = "Area:";
 			comparator = new AreaCompare();
 			break;
 		case "v":
+			measurementType = "Volume:";
 			comparator = new VolumeCompare();
 			break;
 		default:
 			throw new IllegalArgumentException("Invalid comparison type");
 		}
 		
+		
 		//Measure sort time (benchmarking)
 		long startTime = System.currentTimeMillis();
 		
 		String sortName = "";
+		//Determine sorting type
 		switch (sortingType.toLowerCase())
 		{
 		case "b":
