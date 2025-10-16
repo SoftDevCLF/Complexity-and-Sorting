@@ -185,9 +185,23 @@ public class SortManager
 		long endTime = System.currentTimeMillis();
 		long totalDuration = (endTime - startTime); //Average run time
 		
+		//Print the first element
+		if (shapes.length > 0)
+		{
+			System.out.println("First element is: " + shapes[0] + "\t " + measurementType);
+		}		
+		
+		// Print every 1000th element
+		for (int i = 999; i < shapes.length; i += 1000) { // 999 for 1000th, 1999 for 2000th, etc.
+		    System.out.println((i + 1) + "-th element:\t " + shapes[i] + "\t" + measurementType);
+		}
+		
+		//Print the last element
+		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t" + measurementType);
+		
 		
 		//Print the type of sort and runtime in miliseconds 
-		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds" );
+		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds");
 	}
 }
 
