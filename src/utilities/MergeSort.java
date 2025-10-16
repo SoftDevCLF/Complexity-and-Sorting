@@ -29,9 +29,13 @@ public class MergeSort
 		
 		//Copy data into to temporary arrays
 		for (int i = 0; i < n1; ++i)
+		{
 			Left[i] = array[left + i];
+		}
 		for (int j = 0; j < n2; ++j)
+		{
 			Right[j] = array[mid + 1 + j];
+		}
 		
 		//Merge the temporary arrays
 		int i = 0, j = 0, k = left;
@@ -89,9 +93,13 @@ public class MergeSort
 			
 		//Copy data into to temporary arrays
 		for (int i = 0; i < n1; ++i)
+		{
 			Left[i] = array[left + i];
+		}
 		for (int j = 0; j < n2; ++j)
+		{
 			Right[j] = array[mid + 1 + j];
+		}
 			
 		//Merge the temporary arrays
 		int i = 0, j = 0, k = left;
