@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import shapes.*;
 import utilities.BubbleSort;
+import utilities.InsertionSort;
 
 public class SortManager
 {
@@ -134,18 +135,28 @@ public class SortManager
 		switch (sortingType.toLowerCase())
 		{
 		case "b":
-			if (comparator == null)
-			{
-				BubbleSort.bubbleSortCompareTo(shapes);
-			}
-			else
-			{
-				BubbleSort.bubbleSortCompare(shapes, comparator);
-			}
-			break;
+	        if (comparator == null)
+	        {
+	            BubbleSort.bubbleSortCompareTo(shapes);
+	        }
+	        else
+	        {
+	            BubbleSort.bubbleSortCompare(shapes, comparator);
+	        }
+	        break;
+		case "i":
+	        if (comparator == null)
+	        {
+	            InsertionSort.insertionSortCompareTo(shapes);
+	        }
+	        else
+	        {
+	            InsertionSort.insertionSortCompare(shapes, comparator);
+	        }
+	        break;
 
-		default:
-			throw new IllegalArgumentException("Invalid sorting type");
+	    default:
+	        throw new IllegalArgumentException("Invalid sorting type: " + sortingType);
 		}
 	}
 }
