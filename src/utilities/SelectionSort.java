@@ -28,4 +28,26 @@ public class SelectionSort
 			array[maxIndex] = temp;
 		}
 	}
+	
+	// Compare using area or volume 
+	public static void selectionSortCompare(Shape[] array, Comparator<Shape> comparator) 
+	{
+		int n = array.length;
+		
+		for (int i = 0; i < n - 1; i++) 
+		{
+			int maxIndex = 1;
+			
+			for (int j = i + 1; j < n; j++) 
+			{
+				if (comparator.compare(array[j], array[maxIndex]) > 0 )
+				{
+					maxIndex = j;
+				}
+			}
+			Shape temp = array[i];
+			array[i] = array[maxIndex];
+			array[maxIndex] = temp;
+		}
+	}
 }

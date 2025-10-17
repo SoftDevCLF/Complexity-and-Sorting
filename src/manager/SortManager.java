@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import shapes.*;
 import utilities.BubbleSort;
+import utilities.SelectionSort;
 
 public class SortManager
 {
@@ -143,6 +144,16 @@ public class SortManager
 				BubbleSort.bubbleSortCompare(shapes, comparator);
 			}
 			break;
+		case "s":
+			if (comparator == null)
+			{
+				SelectionSort.selectionSortCompareTo(shapes);
+			}
+			else
+			{
+				SelectionSort.selectionSortCompare(shapes, comparator);
+			}
+			break; 
 
 		default:
 			throw new IllegalArgumentException("Invalid sorting type");
