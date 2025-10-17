@@ -5,6 +5,54 @@ import java.util.*;
 import shapes.*;
 import utilities.*;
 
+/**
+ * The {@code SortManager} class serves as the central controller for managing
+ * file input, shape creation, comparison logic, benchmarking and sorting operations.
+ *
+ * <h2>Command-Line Arguments</h2>
+ * The class expects three arguments:
+ * <ul>
+ *   <li><b>-f</b><i>filename</i> → specifies the input file (e.g., <code>-fshapes2.txt</code>)</li>
+ *   <li><b>-t</b><i>comparison type</i> → 'h' for height, 'a' for base area, 'v' for volume</li>
+ *   <li><b>-s</b><i>sort type</i> → defines which sorting algorithm to use:
+ *     <ul>
+ *       <li><b>q</b> → Quick Sort</li>
+ *       <li><b>m</b> → Merge Sort</li>
+ *       <li><b>b</b> → Bubble Sort</li>
+ *       <li><b>i</b> → Insertion Sort</li>
+ *       <li><b>s</b> → Selection Sort</li>
+ *       <li><b>z</b> → Heap Sort</li>
+ *     </ul>
+ *   </li>
+ * </ul>
+ * <h2>Responsibilities</h2>
+ * <ul>
+ *   <li>Parses command-line arguments and validates input</li>
+ *   <li>Loads and constructs shape objects from a text file</li>
+ *   <li>Chooses the appropriate {@link java.util.Comparator} or uses {@code compareTo()}</li>
+ *   <li>Delegates sorting to the correct algorithm implementation in the {@code utilities} package</li>
+ *   <li>Benchmarks sort performance and reports elapsed time</li>
+ *   <li>Prints representative shape data (first, every 1000th, and last element)</li>
+ * </ul>
+ *
+ * <h2>Example Usage</h2>
+ * <pre>{@code
+ * java -jar Sort.jar -fshapes1.txt -Tv -Sb 
+ * }</pre>
+ * This example sorts the shapes in <code>shapes1.txt</code> by volume using Bubble Sort.
+ *
+ * @see shapes.Shape
+ * @see shapes.AreaCompare
+ * @see shapes.VolumeCompare
+ * @see utilities.BubbleSort
+ * @see utilities.InsertionSort
+ * @see utilities.MergeSort
+ * @see utilities.QuickSort
+ * @see utilities.SelectionSort
+ * @see utilities.HeapSort
+ *
+ * @version 1.0
+ */
 public class SortManager
 {
 	private String filename;
@@ -36,7 +84,6 @@ public class SortManager
 				{
 					filename  = filename.substring(1,filename.length() -1);
 				}
-				System.out.println("Filename after stripping quotes: " + filename);
 			} else if (args[i].startsWith("-t") || args[i].startsWith("-T"))
 			{
 				compareType = args[i].substring(2);
@@ -135,7 +182,7 @@ public class SortManager
 			throw new IllegalArgumentException("Invalid comparison type");
 		}
 		
-		//Measure sort time (benchmarking)
+		//Measure sort time (benchmarking) start
 		long startTime = System.currentTimeMillis();
 		String sortName = "";
 		
@@ -212,7 +259,7 @@ public class SortManager
 	        throw new IllegalArgumentException("Invalid sorting type: " + sortingType);
 		}
 		
-		long endTime = System.currentTimeMillis();
+		long endTime = System.currentTimeMillis(); //measure ends
 		long totalDuration = (endTime - startTime); //Average run time
 		
 		//Print the first element
