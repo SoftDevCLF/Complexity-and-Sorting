@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.*;
 import shapes.*;
 import utilities.BubbleSort;
+import utilities.SelectionSort;
+import utilities.HeapSort;
 
 public class SortManager
 {
@@ -141,6 +143,26 @@ public class SortManager
 			else
 			{
 				BubbleSort.bubbleSortCompare(shapes, comparator);
+			}
+			break;
+		case "s":
+			if (comparator == null)
+			{
+				SelectionSort.selectionSortCompareTo(shapes);
+			}
+			else
+			{
+				SelectionSort.selectionSortCompare(shapes, comparator);
+			}
+			break;
+		case "z":
+			if (comparator == null)
+			{
+				HeapSort.heapSortCompareTo(shapes);
+			}
+			else
+			{
+				HeapSort.heapSortCompare(shapes, comparator);
 			}
 			break;
 
