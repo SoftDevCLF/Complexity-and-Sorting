@@ -175,6 +175,7 @@ public class SortManager
 				MergeSort.mergeSortCompare(shapes, 0, shapes.length - 1, comparator);
 			}
 		case "s":
+			sortName = "Selection Sort";
 			if (comparator == null)
 			{
 				SelectionSort.selectionSortCompareTo(shapes);
@@ -185,6 +186,7 @@ public class SortManager
 			}
 			break;
 		case "z":
+			sortName = "Heap Sort";
 			if (comparator == null)
 			{
 				HeapSort.heapSortCompareTo(shapes);
