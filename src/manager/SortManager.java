@@ -17,7 +17,7 @@ public class SortManager
 	public SortManager(String[] args)
 	{
 		// Parsing arguments
-		// check there is enough arguments
+		// check if there is enough arguments
 		if (args.length < 3)
 		{
 			System.out.println("Not enough arguments.");
@@ -116,7 +116,7 @@ public class SortManager
 			e.printStackTrace();
 		}
 		
-		//Determine compare Type
+		//Determine compare Type and the measurement type (Area, Volume, or Height)
 		String measurementType = "";
 		switch (compareType.toLowerCase())
 		{
@@ -136,12 +136,11 @@ public class SortManager
 			throw new IllegalArgumentException("Invalid comparison type");
 		}
 		
-		
 		//Measure sort time (benchmarking)
 		long startTime = System.currentTimeMillis();
-		
 		String sortName = "";
-		//Determine sorting type
+		
+		//Choose and perform the sort type
 		switch (sortingType.toLowerCase())
 		{
 		case "b":
@@ -188,16 +187,59 @@ public class SortManager
 		//Print the first element
 		if (shapes.length > 0)
 		{
-			System.out.println("First element is:\t " + shapes[0] + "\t" + measurementType);
+			Shape s = shapes[0];
+			double value = 0;
+			switch (compareType.toLowerCase())
+			{
+				case "h": 
+					value = s.getHeight();
+					break;
+				case "a":
+					value = s.calcBaseArea();
+					break;
+				case "v":
+					value = s.calcVolume();
+					break;
+			}
+			System.out.println("First element is:\t " + shapes[0] + "\t\t" + measurementType + value);
 		}		
 		
 		// Print every 1000th element
-		for (int i = 999; i < shapes.length; i += 1000) { // 999 for 1000th, 1999 for 2000th, etc.
-		    System.out.println((i + 1) + "-th element:\t " + shapes[i] + "\t" + measurementType);
+		for (int i = 999; i < shapes.length; i += 1000) 
+		{ 
+			Shape s = shapes[i];
+			double value = 0;
+			switch (compareType.toLowerCase())
+			{
+				case "h": 
+					value = s.getHeight();
+					break;
+				case "a":
+					value = s.calcBaseArea();
+					break;
+				case "v":
+					value = s.calcVolume();
+					break;
+			}
+		    System.out.println((i + 1) + "-th element:\t " + shapes[i] + "\t\t" + measurementType + value);
 		}
 		
 		//Print the last element
-		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t" + measurementType);
+		Shape lastShape = shapes[shapes.length - 1];
+		double lastValue = 0;
+		switch (compareType.toLowerCase())
+		{
+			case "h": 
+				lastValue = lastShape.getHeight();
+				break;
+			case "a":
+				lastValue = lastShape.calcBaseArea();
+				break;
+			case "v":
+				lastValue = lastShape.calcVolume();
+				break;
+		}
+		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t\t" + measurementType + lastValue);
 		
 		
 		//Print the type of sort and runtime in milliseconds 
