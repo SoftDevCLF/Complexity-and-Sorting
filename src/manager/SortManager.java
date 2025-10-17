@@ -155,7 +155,7 @@ public class SortManager
 				SelectionSort.selectionSortCompare(shapes, comparator);
 			}
 			break;
-		case "h":
+		case "z":
 			if (comparator == null)
 			{
 				HeapSort.heapSortCompareTo(shapes);
