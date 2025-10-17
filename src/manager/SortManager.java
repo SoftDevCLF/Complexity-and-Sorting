@@ -3,10 +3,7 @@ package manager;
 import java.io.*;
 import java.util.*;
 import shapes.*;
-import utilities.BubbleSort;
-import utilities.InsertionSort;
-import utilities.SelectionSort;
-import utilities.HeapSort;
+import utilities.*;
 
 public class SortManager
 {
@@ -19,7 +16,7 @@ public class SortManager
 	public SortManager(String[] args)
 	{
 		// Parsing arguments
-		// check there is enough arguments
+		// check if there is enough arguments
 		if (args.length < 3)
 		{
 			System.out.println("Not enough arguments.");
@@ -118,25 +115,56 @@ public class SortManager
 			e.printStackTrace();
 		}
 		
-		//Determine compare Type
+		//Determine compare Type and the measurement type (Area, Volume, or Height)
+		String measurementType = "";
 		switch (compareType.toLowerCase())
 		{
 		case "h":
+			measurementType = "Height:";
 			comparator = null;
 			break;
 		case "a":
+			measurementType = "Area:";
 			comparator = new AreaCompare();
 			break;
 		case "v":
+			measurementType = "Volume:";
 			comparator = new VolumeCompare();
 			break;
 		default:
 			throw new IllegalArgumentException("Invalid comparison type");
 		}
-				
+		
+		//Measure sort time (benchmarking)
+		long startTime = System.currentTimeMillis();
+		String sortName = "";
+		
+		//Choose and perform the sort type
 		switch (sortingType.toLowerCase())
 		{
+		case "q":
+			sortName = "Quick Sort";
+			if (comparator == null)
+			{
+				QuickSort.quickSortCompareTo(shapes, 0, shapes.length - 1);
+			}
+			else
+			{
+				QuickSort.quickSortCompare(shapes, comparator, 0, shapes.length - 1);
+			}
+			break;
+		case "m":
+			sortName = "Merge Sort";
+			if (comparator == null)
+			{
+				MergeSort.mergeSortCompareTo(shapes, 0, shapes.length - 1);
+			}
+			else 
+			{
+				MergeSort.mergeSortCompare(shapes, 0, shapes.length - 1, comparator);
+			}
 		case "b":
+			sortName = "Bubble Sort";
 	        if (comparator == null)
 	        {
 	            BubbleSort.bubbleSortCompareTo(shapes);
@@ -147,6 +175,7 @@ public class SortManager
 	        }
 	        break;
 		case "i":
+			sortName = "Insertion Sort";
 	        if (comparator == null)
 	        {
 	            InsertionSort.insertionSortCompareTo(shapes);
@@ -157,6 +186,7 @@ public class SortManager
 	        }
 	        break;
 		case "s":
+			sortName = "Selection Sort";
 			if (comparator == null)
 			{
 				SelectionSort.selectionSortCompareTo(shapes);
@@ -167,6 +197,7 @@ public class SortManager
 			}
 			break;
 		case "z":
+			sortName = "Heap Sort";
 			if (comparator == null)
 			{
 				HeapSort.heapSortCompareTo(shapes);
@@ -180,5 +211,71 @@ public class SortManager
 	    default:
 	        throw new IllegalArgumentException("Invalid sorting type: " + sortingType);
 		}
-	}
+		
+		long endTime = System.currentTimeMillis();
+		long totalDuration = (endTime - startTime); //Average run time
+		
+		//Print the first element
+		if (shapes.length > 0)
+		{
+			Shape s = shapes[0];
+			double value = 0;
+			switch (compareType.toLowerCase())
+			{
+				case "h": 
+					value = s.getHeight();
+					break;
+				case "a":
+					value = s.calcBaseArea();
+					break;
+				case "v":
+					value = s.calcVolume();
+					break;
+			}
+			System.out.println("First element is:\t " + shapes[0] + "\t\t" + measurementType + value);
+		}		
+		
+		// Print every 1000th element
+		for (int i = 999; i < shapes.length; i += 1000) 
+		{ 
+			Shape s = shapes[i];
+			double value = 0;
+			switch (compareType.toLowerCase())
+			{
+				case "h": 
+					value = s.getHeight();
+					break;
+				case "a":
+					value = s.calcBaseArea();
+					break;
+				case "v":
+					value = s.calcVolume();
+					break;
+			}
+		    System.out.println((i + 1) + "-th element:\t " + shapes[i] + "\t\t" + measurementType + value);
+		}
+		
+		//Print the last element
+		Shape lastShape = shapes[shapes.length - 1];
+		double lastValue = 0;
+		switch (compareType.toLowerCase())
+		{
+			case "h": 
+				lastValue = lastShape.getHeight();
+				break;
+			case "a":
+				lastValue = lastShape.calcBaseArea();
+				break;
+			case "v":
+				lastValue = lastShape.calcVolume();
+				break;
+		}
+		
+		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t\t" + measurementType + lastValue);
+		
+		
+		//Print the type of sort and runtime in milliseconds 
+		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds");
+		}
 }
+
