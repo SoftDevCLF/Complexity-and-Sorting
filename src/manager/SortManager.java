@@ -5,6 +5,8 @@ import java.util.*;
 import shapes.*;
 import utilities.BubbleSort;
 import utilities.InsertionSort;
+import utilities.SelectionSort;
+import utilities.HeapSort;
 
 public class SortManager
 {
@@ -154,6 +156,26 @@ public class SortManager
 	            InsertionSort.insertionSortCompare(shapes, comparator);
 	        }
 	        break;
+		case "s":
+			if (comparator == null)
+			{
+				SelectionSort.selectionSortCompareTo(shapes);
+			}
+			else
+			{
+				SelectionSort.selectionSortCompare(shapes, comparator);
+			}
+			break;
+		case "z":
+			if (comparator == null)
+			{
+				HeapSort.heapSortCompareTo(shapes);
+			}
+			else
+			{
+				HeapSort.heapSortCompare(shapes, comparator);
+			}
+			break;
 
 	    default:
 	        throw new IllegalArgumentException("Invalid sorting type: " + sortingType);
