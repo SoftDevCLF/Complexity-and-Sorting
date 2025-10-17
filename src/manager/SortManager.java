@@ -5,7 +5,6 @@ import java.util.*;
 import shapes.*;
 import utilities.*;
 
-
 public class SortManager
 {
 	private String filename;
@@ -175,6 +174,25 @@ public class SortManager
 			{
 				MergeSort.mergeSortCompare(shapes, 0, shapes.length - 1, comparator);
 			}
+		case "s":
+			if (comparator == null)
+			{
+				SelectionSort.selectionSortCompareTo(shapes);
+			}
+			else
+			{
+				SelectionSort.selectionSortCompare(shapes, comparator);
+			}
+			break;
+		case "z":
+			if (comparator == null)
+			{
+				HeapSort.heapSortCompareTo(shapes);
+			}
+			else
+			{
+				HeapSort.heapSortCompare(shapes, comparator);
+			}
 			break;
 
 		default:
@@ -239,12 +257,13 @@ public class SortManager
 				lastValue = lastShape.calcVolume();
 				break;
 		}
+		
 		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t\t" + measurementType + lastValue);
 		
 		
 		//Print the type of sort and runtime in milliseconds 
 		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds");
-	}
+		
+		}
 }
-
 
