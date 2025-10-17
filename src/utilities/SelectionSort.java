@@ -6,7 +6,7 @@ import java.util.*;
 public class SelectionSort
 {
 	
-	// Compare using height
+	// Sorts the array in descending order by height
 	public static void selectionSortCompareTo(Shape[] array) 
 	{
 		int n = array.length;
@@ -29,7 +29,7 @@ public class SelectionSort
 		}
 	}
 	
-	// Compare using area or volume 
+	// Sorts the array in descending order using area or volume 
 	public static void selectionSortCompare(Shape[] array, Comparator<Shape> comparator) 
 	{
 		int n = array.length;
