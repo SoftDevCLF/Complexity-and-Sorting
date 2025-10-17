@@ -3,20 +3,29 @@ import shapes.Shape;
 import java.util.*;
 
 /**
- * Utilities.java
- *
- * @author temi
- * @version 4.36
+ * The {@code QuickSort} class implements the Quick Sort algorithm for sorting
+ * arrays of {@link Shape} objects.
  * 
- * Class Definition: This class implements two different Quicksort methods one using compareTo() and one using compare()
- * The implementation starts with two different partition methods, a swap method is added for the positioning of the integers 
- * then lastly two quick sort function implementations are at the end one using the compareTo and one using the compare. 
- * All methods are required in order to do a quicksort functionality.
+ * <p>Quick Sort partitions the array around a pivot element and recursively sorts
+ * the subarrays on each side. Supports sorting by height (using {@code compareTo})
+ * or by a custom {@link Comparator} for area or volume.
+ * 
+ * <p>Time Complexity: O(n log n) average, O(n²) worst case
+ * <br>Space Complexity: O(log n)
+ * 
+ * @version 1.0
  */
 
 public class QuickSort
 {
-	//Partition Method for compareTo()
+	/**
+     * Partitions the array by height using {@link Shape#compareTo(Shape)}.
+     *
+     * @param array the array of shapes
+     * @param low starting index
+     * @param high ending index
+     * @return the pivot index
+     */
 	public static int partitionCompareTo(Shape[] array, int low, int high)
 	{
 		//Choose the pivot
@@ -37,7 +46,15 @@ public class QuickSort
 		return index + 1;
 	}
 	
-	//Partition Method using compare()
+	/**
+     * Partitions the array using a custom {@link Comparator}.
+     *
+     * @param array the array of shapes
+     * @param comparator the comparator for sorting
+     * @param low starting index
+     * @param high ending index
+     * @return the pivot index
+     */
 	public static int partitionCompare(Shape[] array, Comparator<Shape> comparator, int low, int high)
 	{
 		//Choose the pivot
@@ -58,7 +75,13 @@ public class QuickSort
 		return index + 1;
 	}
 	
-	//Swap function
+	/**
+     * Swaps two elements in the array.
+     *
+     * @param array the array of shapes
+     * @param i first index
+     * @param j second index
+     */
 	public static void swap(Shape[] array, int i, int j)
 	{
 		Shape temp = array[i];
@@ -66,9 +89,13 @@ public class QuickSort
 		array[j] = temp;
 	}
 	
-	
-	
-	//Quicksort function implementation compareTo()
+	/**
+     * Sorts the array by height in descending order.
+     *
+     * @param array the array of shapes
+     * @param low starting index
+     * @param high ending index
+     */
 	public static void quickSortCompareTo(Shape[] array, int low, int high)
 	{
 		if (low < high)
@@ -82,7 +109,14 @@ public class QuickSort
 		}
 	}
 	
-	//Quicksort function implementation compare()
+	/**
+     * Sorts the array using a custom {@link Comparator}.
+     *
+     * @param array the array of shapes
+     * @param comparator the comparator for sorting
+     * @param low starting index
+     * @param high ending index
+     */
 	public static void quickSortCompare(Shape[] array, Comparator<Shape> comparator, int low, int high)
 	{
 		if (low < high)
@@ -95,7 +129,4 @@ public class QuickSort
 			quickSortCompare(array, comparator, pi + 1, high);
 		}
 	}
-	
-	
-
 }
