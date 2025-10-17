@@ -47,5 +47,11 @@ public abstract class Shape implements Comparable<Shape>
 			return 0;
 		}
 	}
+	
+	@Override
+    public String toString() 
+    {
+        return this.getClass().getName(); 
+    }
 
 }
