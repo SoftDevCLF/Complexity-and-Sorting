@@ -142,17 +142,6 @@ public class SortManager
 		//Choose and perform the sort type
 		switch (sortingType.toLowerCase())
 		{
-		case "b":
-			sortName = "Bubble Sort";
-			if (comparator == null)
-			{
-				BubbleSort.bubbleSortCompareTo(shapes);
-			}
-			else
-			{
-				BubbleSort.bubbleSortCompare(shapes, comparator);
-			}
-			break;
 		case "q":
 			sortName = "Quick Sort";
 			if (comparator == null)
@@ -174,6 +163,28 @@ public class SortManager
 			{
 				MergeSort.mergeSortCompare(shapes, 0, shapes.length - 1, comparator);
 			}
+		case "b":
+			sortName = "Bubble Sort";
+	        if (comparator == null)
+	        {
+	            BubbleSort.bubbleSortCompareTo(shapes);
+	        }
+	        else
+	        {
+	            BubbleSort.bubbleSortCompare(shapes, comparator);
+	        }
+	        break;
+		case "i":
+			sortName = "Insertion Sort";
+	        if (comparator == null)
+	        {
+	            InsertionSort.insertionSortCompareTo(shapes);
+	        }
+	        else
+	        {
+	            InsertionSort.insertionSortCompare(shapes, comparator);
+	        }
+	        break;
 		case "s":
 			sortName = "Selection Sort";
 			if (comparator == null)
@@ -197,8 +208,8 @@ public class SortManager
 			}
 			break;
 
-		default:
-			throw new IllegalArgumentException("Invalid sorting type");
+	    default:
+	        throw new IllegalArgumentException("Invalid sorting type: " + sortingType);
 		}
 		
 		long endTime = System.currentTimeMillis();
@@ -265,7 +276,6 @@ public class SortManager
 		
 		//Print the type of sort and runtime in milliseconds 
 		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds");
-		
 		}
 }
 
