@@ -6,6 +6,19 @@ package shapes;
  * 
  * <p>Implements {@link Comparable} to sort by height by default.
  * 
+ * <p>Subclasses include specific geometric solids such as:
+ * <ul>
+ *   <li>{@link shapes.Cone}</li>
+ *   <li>{@link shapes.Cylinder}</li>
+ *   <li>{@link shapes.Pyramid}</li>
+ *   <li>{@link shapes.Prism}</li>
+ * </ul>
+ * 
+ * @see shapes.Prism
+ * @see shapes.Cone
+ * @see shapes.Cylinder
+ * @see shapes.Pyramid
+ * 
  * @version 1.0
  */
 public abstract class Shape implements Comparable<Shape>
