@@ -3,20 +3,35 @@ import shapes.Shape;
 import java.util.*;
 
 /**
- * Utilities.java
- *
- * @author temi
- * @version 4.36
+ * The {@code MergeSort} class implements the Merge Sort algorithm for sorting
+ * arrays of {@link Shape} objects.
  * 
- * Class Definition: This class implements two different Merge methods one using compareTo() and one using compare()
- * The implementation works by recursively diving the input array into two halves, then sorts the two halves,  
- * and then merges them back together to obtain the sorted array. It divide, conquers, and merges.
- * All methods are required in order to the merge functionality.
+ * <p>Merge Sort is a divide-and-conquer algorithm that recursively divides
+ * the array into two halves, sorts each half, and then merges the sorted halves
+ * back together to produce the final sorted array.
+ * 
+ * <p>Supports sorting by height (using {@code compareTo}) or a custom
+ * {@link Comparator} for area or volume.
+ * 
+ * <p>Time Complexity: O(n log n)
+ * <br>Space Complexity: O(n)
+ * 
+ * @version 1.0
  */
-
 public class MergeSort
 {
-	//Merge two sub arrays of Shapes[] with compareTo() array
+	/**
+     * Merges two subarrays of {@link Shape} objects using {@link Shape#compareTo(Shape)}.
+     *
+     * <p>This method merges two sorted halves of the array into a single sorted
+     * section in descending order by height.
+     *
+     * @param array the array of {@code Shape} objects to be merged
+     * @param left the starting index of the first subarray
+     * @param mid the ending index of the first subarray
+     * @param right the ending index of the second subarray
+     */
+
 	public static void mergeCompareTo(Shape[] array, int left, int mid, int right) 
 	{
 		//Finding sizes of two sub arrays to be merged
@@ -68,7 +83,14 @@ public class MergeSort
 		}
 	}
 	
-	//Using compareTo() to compare both shapes by height
+	/**
+     * Recursively sorts the array of {@link Shape} objects in descending order by height
+     * using the {@link Shape#compareTo(Shape)} method.
+     *
+     * @param array the array of {@code Shape} objects to be sorted
+     * @param left the starting index of the array section to sort
+     * @param right the ending index of the array section to sort
+     */
 	public static void mergeSortCompareTo(Shape[] array, int left, int right)
 	{
 		if (left < right)
@@ -80,7 +102,18 @@ public class MergeSort
 		}
 	}
 	
-	//Merge two sub arrays of Shapes[] with compare() array
+	/**
+     * Merges two subarrays of {@link Shape} objects using a custom {@link Comparator}.
+     *
+     * <p>This method merges two sorted halves of the array into a single sorted
+     * section in descending order based on area or volume.
+     *
+     * @param array the array of {@code Shape} objects to be merged
+     * @param left the starting index of the first subarray
+     * @param mid the ending index of the first subarray
+     * @param right the ending index of the second subarray
+     * @param comparator the {@link Comparator} used to define the sort order
+     */
 	public static void mergeCompare(Shape[] array, int left, int mid, int right, Comparator<Shape> comparator) 
 	{
 		//Finding sizes of two sub arrays to be merged
@@ -134,7 +167,18 @@ public class MergeSort
 		}
 		}
 		
-		//using compare() to compare both shapes by volume or area
+	/**
+     * Recursively sorts the array of {@link Shape} objects in descending order
+     * using a custom {@link Comparator}.
+     *
+     * <p>This version allows sorting based on different shape attributes, such as
+     * base area or volume.
+     *
+     * @param array the array of {@code Shape} objects to be sorted
+     * @param left the starting index of the array section to sort
+     * @param right the ending index of the array section to sort
+     * @param comparator the {@link Comparator} used to define the sort order
+     */
 		public static void mergeSortCompare(Shape[] array, int left, int right, Comparator<Shape> comparator)
 		{
 			if (left < right)

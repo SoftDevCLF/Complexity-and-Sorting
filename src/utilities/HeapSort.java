@@ -3,9 +3,29 @@ package utilities;
 import shapes.Shape;
 import java.util.*;
 
+/**
+ * The {@code HeapSort} class implements the Heap Sort algorithm for sorting
+ * arrays of {@link Shape} objects.
+ * 
+ * <p>Builds a heap from the input and repeatedly extracts the largest element
+ * to sort in descending order. Supports sorting by height (using {@code compareTo})
+ * or by a custom {@link Comparator} (area or volume).
+ * 
+ * <p>Time Complexity: O(n log n)
+ * <br>Space Complexity: O(1)
+ * 
+ * @version 1.0
+ */
+
+
 public class HeapSort
 {
-	//Sorts the array in descending order by height using a min-heap (Comparable) 
+	/**
+     * Sorts an array of {@link Shape} objects in descending order by height
+     * using a min-heap built from their natural ordering ({@link Shape#compareTo(Shape)}).
+     *
+     * @param array the array of {@code Shape} objects to be sorted
+     */ 
 	public static void heapSortCompareTo(Shape[] array) 
 	{
 		int n = array.length;
@@ -21,7 +41,12 @@ public class HeapSort
 		}
 	}
 	
-	// Builds min-heap based on height comparison
+	/**
+     * Builds a min-heap based on height comparison using {@link Shape#compareTo(Shape)}.
+     *
+     * @param array the array of {@code Shape} objects
+     * @param n the number of elements in the heap
+     */
 	private static void buildMinHeapComparable(Shape[] array, int n) 
 	{
 		for (int i = n / 2 - 1; i >= 0; i--)
@@ -30,7 +55,13 @@ public class HeapSort
 		}
 	}
 	
-	// Moves a node down to maintain min-heap property for comparable 
+	/**
+     * Maintains the min-heap property for {@link Shape} objects compared by height.
+     *
+     * @param array the array representing the heap
+     * @param i the index of the current node
+     * @param n the size of the heap
+     */ 
 	private static void siftDownComparable(Shape[] array, int i, int n) 
 	{
         while (true) 
@@ -49,7 +80,14 @@ public class HeapSort
         }
     }
 	
-	// Sorts the array in descending order using a Comparator volume or area
+	/**
+     * Sorts an array of {@link Shape} objects in descending order using a custom {@link Comparator}.
+     *
+     * <p>Allows sorting by other attributes such as base area or volume.
+     *
+     * @param array the array of {@code Shape} objects to be sorted
+     * @param cmp the {@link Comparator} defining the sort order
+     */
 	public static void heapSortCompare(Shape[] array, Comparator<Shape> cmp) 
 	{
 		int n = array.length;
@@ -65,7 +103,13 @@ public class HeapSort
 		}
 	}
 
-	// Builds a min-heap using the given Comparator
+	/**
+     * Builds a min-heap using a custom {@link Comparator}.
+     *
+     * @param array the array of {@code Shape} objects
+     * @param n the number of elements in the heap
+     * @param cmp the {@link Comparator} used for ordering
+     */
 	private static void buildMinHeapComparator(Shape[] array, int n, Comparator<Shape> cmp) 
 	{
 		for (int i = n / 2 - 1; i >= 0; i--)
@@ -74,7 +118,14 @@ public class HeapSort
 		}
 	}
 	
-	// Moves a node down to maintain the min-heap property (for Comparator)
+	/**
+     * Maintains the min-heap property using a custom {@link Comparator}.
+     *
+     * @param a the array representing the heap
+     * @param i the index of the current node
+     * @param n the size of the heap
+     * @param cmp the {@link Comparator} used for comparison
+     */
 	private static void siftDownComparator(Shape[] a, int i, int n, Comparator<Shape> cmp) 
 	{
         while (true) 
@@ -92,7 +143,13 @@ public class HeapSort
         }
     }
 	
-	// Swaps two shapes in the array
+	/**
+     * Swaps two {@link Shape} elements in the array.
+     *
+     * @param a the array of shapes
+     * @param i the index of the first element
+     * @param j the index of the second element
+     */
 	private static void swap(Shape[] a, int i, int j) 
 	{
         Shape t = a[i]; a[i] = a[j]; a[j] = t;
