@@ -262,6 +262,7 @@ public class SortManager
 		long endTime = System.currentTimeMillis(); //measure ends
 		long totalDuration = (endTime - startTime); //Average run time
 		
+		//Printing
 		//Print the first element
 		if (shapes.length > 0)
 		{
@@ -279,7 +280,15 @@ public class SortManager
 					value = s.calcVolume();
 					break;
 			}
-			System.out.println("First element is:\t " + shapes[0] + "\t\t" + measurementType + value);
+			
+			// Use of printf to format the output: printf(format,args)
+			// %-18s : left-justified label
+			// %25s  : right-justified shape name
+			// %5s   : gap between columns
+			// %s    : measurement type label (s is a placeholder)
+			// %.15E  : measurement value in scientific notation, 15 digits allowed with capital E
+		    System.out.printf("%-18s %25s%5s%s %.15E%n",
+                    "First element is:", s, "", measurementType, value);
 		}		
 		
 		// Print every 1000th element
@@ -299,7 +308,8 @@ public class SortManager
 					value = s.calcVolume();
 					break;
 			}
-		    System.out.println((i + 1) + "-th element:\t " + shapes[i] + "\t\t" + measurementType + value);
+		    System.out.printf("%-18s %25s%5s%s %.15E%n",
+                    (i + 1) + "-th element:", s, "", measurementType, value);
 		}
 		
 		//Print the last element
@@ -318,11 +328,12 @@ public class SortManager
 				break;
 		}
 		
-		System.out.println("Last element is:\t " + shapes[shapes.length - 1] + "\t\t" + measurementType + lastValue);
+		System.out.printf("%-18s %25s%5s%s %.15E%n",
+                "Last element is:", lastShape, "", measurementType, lastValue);
 		
 		
 		//Print the type of sort and runtime in milliseconds 
-		System.out.println("\n" + sortName + " run time was: " + totalDuration + " milliseconds");
+		System.out.println(sortName + " run time was: " + totalDuration + " milliseconds");
 		}
 }
 
