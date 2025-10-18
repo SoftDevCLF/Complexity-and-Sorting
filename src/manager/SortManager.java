@@ -282,12 +282,12 @@ public class SortManager
 			}
 			
 			// Use of printf to format the output: printf(format,args)
-			// %-18s : left-justified label
+			// %-19s : left-justified label
 			// %25s  : right-justified shape name
 			// %5s   : gap between columns
 			// %s    : measurement type label (s is a placeholder)
 			// %.15E  : measurement value in scientific notation, 15 digits allowed with capital E
-		    System.out.printf("%-18s %25s%5s%s %.15E%n",
+		    System.out.printf("%-19s %25s%5s%s %.15E%n",
                     "First element is:", s, "", measurementType, value);
 		}		
 		
@@ -308,7 +308,7 @@ public class SortManager
 					value = s.calcVolume();
 					break;
 			}
-		    System.out.printf("%-18s %25s%5s%s %.15E%n",
+		    System.out.printf("%-19s %25s%5s%s %.15E%n",
                     (i + 1) + "-th element:", s, "", measurementType, value);
 		}
 		
@@ -328,7 +328,7 @@ public class SortManager
 				break;
 		}
 		
-		System.out.printf("%-18s %25s%5s%s %.15E%n",
+		System.out.printf("%-19s %25s%5s%s %.15E%n",
                 "Last element is:", lastShape, "", measurementType, lastValue);
 		
 		
